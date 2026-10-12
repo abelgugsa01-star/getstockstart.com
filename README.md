@@ -6,7 +6,7 @@ Match supplier invoice lines to an exported pricebook, review new items and cost
 
 ## Try StockStart
 
-[Visit the official website and start a 30-day free trial](https://getstockstart.com/?utm_source=github&utm_medium=referral&utm_campaign=product_readme).
+[Visit the official website and start a 14-day free trial](https://getstockstart.com/?utm_source=github&utm_medium=referral&utm_campaign=product_readme).
 
 No card is required. The trial does not charge or renew automatically. An optional paid subscription is $129/month and begins only if you choose it. Existing subscriptions retain their original terms.
 
