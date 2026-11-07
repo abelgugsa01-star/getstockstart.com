@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="./styles.css">
+<title>Free Pricebook Unit-Cost Checker for Supplier Invoices | StockStart</title>
+<meta name="description" content="Free browser tool for HVAC, plumbing and electrical shops: paste invoice lines, convert pack prices to unit costs, and flag pack errors and unusual cost changes before updating your pricebook. Nothing is uploaded.">
+<link rel="canonical" href="https://getstockstart.com/pricebook-unit-cost-checker.html">
+<meta property="og:type" content="website"><meta property="og:site_name" content="StockStart"><meta property="og:title" content="Free Pricebook Unit-Cost Checker for Supplier Invoices | StockStart"><meta property="og:description" content="Free browser tool for HVAC, plumbing and electrical shops: paste invoice lines, convert pack prices to unit costs, and flag pack errors and unusual cost changes before updating your pricebook. Nothing is uploaded."><meta property="og:url" content="https://getstockstart.com/pricebook-unit-cost-checker.html">
+<style>
+  .g{max-width:860px;margin:0 auto;padding:40px 20px 80px;line-height:1.6}
+  .g h1{font-size:38px;line-height:1.1;margin:8px 0 14px}.g h2{font-size:24px;margin:40px 0 10px}.g h3{font-size:18px;margin:26px 0 6px}
+  .g p,.g li{max-width:720px}.g ul,.g ol{padding-left:22px}.g li{margin-bottom:7px}
+  .g .lede{font-size:18px;opacity:.85;max-width:720px}
+  .g .toc{display:flex;flex-wrap:wrap;gap:6px 20px;font-size:13px;margin:10px 0 0;letter-spacing:.02em}.g .toc a{text-decoration:none;opacity:.8}.g .toc a:hover{opacity:1;text-decoration:underline}
+  .g .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:16px 0 6px}
+  .g .cards div{border:1px solid rgba(0,0,0,.15);border-radius:8px;padding:14px 16px;background:rgba(255,255,255,.55)}
+  .g .cards .k{font-size:12px;letter-spacing:.06em;text-transform:uppercase;opacity:.7}.g .cards .v{margin-top:6px;font-size:15px}
+  .g table{width:100%;border-collapse:collapse;font-size:15px;margin:12px 0 6px;background:rgba(255,255,255,.55)}
+  .g th,.g td{text-align:left;padding:9px 11px;border-bottom:1px solid rgba(0,0,0,.15);vertical-align:top}.g th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;opacity:.75;font-weight:600}
+  .g .check{list-style:none;padding:0;max-width:720px}.g .check li{display:grid;grid-template-columns:24px 1fr;gap:8px;padding:8px 0;border-bottom:1px dashed rgba(0,0,0,.18)}.g .check li::before{content:"";width:15px;height:15px;border:1.5px solid currentColor;border-radius:3px;margin-top:5px;opacity:.7}
+  .g .note{border-left:3px solid currentColor;padding:10px 14px;margin:14px 0;max-width:720px;background:rgba(0,0,0,.04);font-size:15px}
+  .g .caution{background:rgba(160,40,40,.07);border-left-color:#7a2626}
+  .g .cta{border:1px solid rgba(0,0,0,.15);border-radius:10px;padding:24px 26px;margin-top:36px;background:rgba(255,255,255,.6)}
+  .g .cta h2{margin-top:0}.g .cta .btn{display:inline-block;padding:11px 20px;border-radius:6px;background:#173e32;color:#fff !important;text-decoration:none;font-weight:600;margin-top:8px}
+  @media print{header,footer,.g .cta,.g .toc{display:none}.g{padding:0}}
+</style>
+<style>
+  .tool{border:1px solid rgba(0,0,0,.15);border-radius:10px;padding:20px 22px;margin:18px 0;background:rgba(255,255,255,.6)}
+  .tool label{display:block;font-size:14px;font-weight:600;margin:0 0 4px}
+  .tool input,.tool textarea{width:100%;box-sizing:border-box;padding:9px 10px;border:1px solid rgba(0,0,0,.3);border-radius:6px;font:inherit;background:#fff}
+  .tool textarea{font-family:ui-monospace,Consolas,monospace;font-size:14px;min-height:150px}
+  .tool .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+  .tool small{display:block;font-size:13px;opacity:.75;margin-top:3px}
+  .tool button{margin-top:14px;padding:11px 20px;border:0;border-radius:6px;background:#173e32;color:#fff;font:inherit;font-weight:600;cursor:pointer}
+  .result{margin-top:16px}.result table{margin-top:6px}
+  .ok{color:#1d5c3f;font-weight:600}.bad{color:#7a2626;font-weight:600}.warn{color:#7a5310;font-weight:600}
+  .scroll{overflow-x:auto}
+  @media print{.tool button{display:none}}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Pricebook unit-cost checker", "url": "https://getstockstart.com/pricebook-unit-cost-checker.html", "description": "Free browser tool for HVAC, plumbing and electrical shops: paste invoice lines, convert pack prices to unit costs, and flag pack errors and unusual cost changes before updating your pricebook. Nothing is uploaded.", "applicationCategory": "BusinessApplication", "operatingSystem": "Any (runs in the browser)", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "publisher": {"@type": "Organization", "name": "Profitpin LLC"}}</script>
+<link rel="apple-touch-icon" href="/icon-512.png">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="header wrap"><a class="brand" href="./" aria-label="StockStart home"><img src="./mark.svg" width="38" height="38" alt=""><span>StockStart<small>BY PROFITPIN</small></span></a><nav aria-label="Main navigation"><a href="./#product">The product</a><a href="./#how-it-works">How it works</a><a href="./#pricing">Pricing</a><a href="./#questions">Questions</a></nav><a class="button small dark" href="https://app.getstockstart.com/signup">Start free trial <span aria-hidden="true">↗</span></a></header>
+<main class="g" id="main">
+  <p class="eyebrow"><span class="dot"></span> STOCKSTART · FREE TOOL</p>
+  <h1>Pricebook unit-cost checker.</h1>
+  <p class="lede">Paste invoice lines and your current pricebook costs. This converts each pack price to a cost per unit, shows the change, and flags the classic mistake: a whole box cost entered as the cost of one. It runs in your browser. Nothing is uploaded and there is no sign-up.</p>
+  <div class="tool">
+    <label for="lines">Invoice lines, one per row</label>
+    <textarea id="lines" spellcheck="false">1/2 CU 90 ELBOW,84.50,100,0.81
+FILTER 16X25X1,96.00,12,96.00
+CAP RUN 45/5,18.75,1,14.20
+PEX 3/4 100FT,62.00,100,0.61</textarea>
+    <small>Columns: part or description, invoice price, units in that pack, pricebook cost per unit. Commas or tabs both work, so you can paste from a spreadsheet. The rows shown are made-up examples.</small>
+    <div class="grid" style="margin-top:14px"><div><label for="tol">Flag cost changes above this percent</label><input id="tol" value="10" inputmode="decimal"><small>Pick what counts as unusual for your shop.</small></div></div>
+    <button type="button" id="run">Check these lines</button>
+    <div class="result" id="out" aria-live="polite"></div>
+  </div>
+  <div class="note">This checks arithmetic on what you paste. It does not read your invoices or connect to ServiceTitan, and a flag is a prompt to look, not a verdict. A pack quantity must match how your pricebook counts the item.</div>
+  <h2>What the flags mean</h2>
+  <ul>
+    <li><b>Possible pack error:</b> the new unit cost and the pricebook cost differ by about the pack quantity. Check the unit before changing anything.</li>
+    <li><b>Cost change:</b> the new unit cost moved by more than your percent. Check it against the supplier's price change.</li>
+    <li><b>No pricebook cost:</b> nothing to compare yet, so check that this isn't a duplicate of an existing item.</li>
+  </ul>
+  <p>For the wider routine, see the <a href="servicetitan-pricebook-vendor-invoices.html">weekly invoice workflow</a> and the <a href="servicetitan-pricebook-import-checklist.html">import pre-flight checklist</a>.</p>
+  <div class="cta">
+    <p class="eyebrow"><span class="dot"></span> FROM THE INVOICE ITSELF</p>
+    <h2>StockStart reads the invoices for you.</h2>
+    <p>It reads supplier invoices against your exported ServiceTitan pricebook, matches by part number and unit, holds uncertain lines for review, and prepares a workbook for you to import yourself. $129.00/month, 14-day no-card trial.</p>
+    <a class="btn" href="https://app.getstockstart.com/signup">Start your free trial ↗</a>
+  </div>
+</main>
+<script>
+const SCALE=6n, ONE=10n**SCALE;
+function dec(s){s=String(s==null?'':s).replace(/[$,\s]/g,'');if(s==='')return 0n;if(!/^-?\d*\.?\d*$/.test(s)||s==='.'||s==='-')return null;const neg=s[0]==='-';if(neg)s=s.slice(1);const parts=s.split('.');const frac=(parts[1]||'');if(frac.length>Number(SCALE))return null;const v=BigInt(parts[0]||'0')*ONE+BigInt((frac+'000000').slice(0,6));return neg?-v:v}
+function fmt(v,minDp){const neg=v<0n;if(neg)v=-v;let i=(v/ONE).toString().replace(/\B(?=(\d{3})+(?!\d))/g,',');let f=(v%ONE).toString().padStart(6,'0').replace(/0+$/,'');f=f.padEnd(minDp||0,'0');return (neg?'-':'')+i+(f?'.'+f:'')}
+function roundDiv(n,d){const neg=(n<0n)!==(d<0n);if(n<0n)n=-n;if(d<0n)d=-d;const q=(n*2n+d)/(d*2n);return neg?-q:q}
+function mul(a,b){return roundDiv(a*b,ONE)}
+function div(a,b){return roundDiv(a*ONE,b)}
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+
+function checkLines(text,tol){
+  const rows=[];
+  text.split(/\r?\n/).forEach(function(line){
+    if(!line.trim())return;
+    const c=line.split(line.indexOf('\t')>=0?'\t':',').map(function(x){return x.trim()});
+    const name=c[0]||'';
+    if(c.length<3){rows.push({name:name,err:'Needs at least name, price and pack quantity'});return}
+    const price=dec(c[1]),pack=dec(c[2]),hasCur=c.length>3&&c[3]!=='',cur=hasCur?dec(c[3]):0n;
+    if(price===null||pack===null||cur===null||price<0n||pack<=0n||cur<0n){rows.push({name:name,err:'Check the numbers on this line'});return}
+    const unit=div(price,pack),r={name:name,unit:unit,cur:hasCur?cur:null,flags:[]};
+    if(!hasCur||cur===0n){r.flags.push(['warn','No pricebook cost']);rows.push(r);return}
+    const pct=roundDiv((unit-cur)*100n*ONE,cur);r.pct=pct;
+    const abs=pct<0n?-pct:pct;
+    if(pack>ONE&&unit>0n){
+      const ratio=unit>cur?div(unit,cur):div(cur,unit);
+      const lo=mul(pack,dec('0.8')),hi=mul(pack,dec('1.2'));
+      if(ratio>=lo&&ratio<=hi)r.flags.push(['bad','Possible pack error: looks about '+fmt(pack)+'× off']);
+    }
+    if(abs>tol)r.flags.push(['warn','Cost change above '+fmt(tol)+'%']);
+    if(!r.flags.length)r.flags.push(['ok','Within your limit']);
+    rows.push(r);
+  });
+  return rows;
+}
+document.getElementById('run').addEventListener('click',function(){
+  const out=document.getElementById('out'),tol=dec(document.getElementById('tol').value);
+  if(tol===null||tol<0n){out.innerHTML='<p class="bad">Enter a percent such as 10.</p>';return}
+  const rows=checkLines(document.getElementById('lines').value,tol);
+  if(!rows.length){out.innerHTML='<p class="warn">Paste at least one line.</p>';return}
+  let h='<table><tbody><tr><th>Item</th><th>New unit cost</th><th>Pricebook</th><th>Change</th><th>Result</th></tr>';
+  rows.forEach(function(r){
+    if(r.err){h+='<tr><td>'+esc(r.name)+'</td><td colspan="3"></td><td class="bad">'+esc(r.err)+'</td></tr>';return}
+    h+='<tr><td>'+esc(r.name)+'</td><td>'+fmt(roundDiv(r.unit,10000n)*10000n,2)+'</td><td>'+(r.cur===null?'':fmt(r.cur,2))+'</td><td>'+(r.pct===undefined?'':fmt(roundDiv(r.pct,100000n)*100000n)+'%')+'</td><td>'+r.flags.map(function(f){return '<span class="'+f[0]+'">'+esc(f[1])+'</span>'}).join('<br>')+'</td></tr>';
+  });
+  out.innerHTML='<div class="scroll">'+h+'</tbody></table></div>';
+});
+</script>
+<footer class="wrap"><div class="footer-top"><a class="brand" href="./"><img src="./mark.svg" width="32" height="32" alt=""><span>StockStart<small>BY PROFITPIN</small></span></a><p>Practical software. A clearer way forward.</p><div class="legal-links"><a href="./terms.html">Terms</a><a href="./privacy.html">Privacy</a><a href="./refunds.html">Refunds &amp; cancellation</a><a href="./licenses.html">Third-party notices</a><a href="mailto:support@getstockstart.com">Contact</a></div></div><div class="footer-bottom"><span>© 2026 Profitpin LLC. StockStart.</span><span>ServiceTitan is a trademark of its respective owner. StockStart is independent software and is not affiliated with, endorsed by, or certified by ServiceTitan. It prepares reviewed data; it does not write to your ServiceTitan account.</span></div></footer>
+<script src="/lead-source.js" defer></script></body>
+</html>
